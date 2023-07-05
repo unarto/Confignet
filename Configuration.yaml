@@ -61,6 +61,8 @@ tun:
   macOS-auto-detect-interface: true
   dns-hijack:
     - tcp://108.137.44.39:53
+    - tcp://8.8.8.8:53
+    - tcp://8.8.4.4:53
 experimental:
   interface-name: en0
 
