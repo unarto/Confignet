@@ -79,6 +79,21 @@ proxies:
       Host: sg1-trojan.bonds.id
   sni: sg1-trojan.bonds.id
   skip-cert-verify: true
+  
+ -
+  name: sg2-trojan.bonds.id
+  type: trojan
+  server: 104.16.108.96
+  port: 443
+  password: f438c960-1b36-11ee-af46-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: sg2-trojan.bonds.id
+  sni: sg2-trojan.bonds.id
+  skip-cert-verify: true
 
  - 
   name: v2ray1.udpgw.com
@@ -107,6 +122,7 @@ proxy-groups:
   strategy: consistent-hashing
   proxies:
     - sg1-trojan.bonds.id
+    - sg2-trojan.bonds.id
     - v2ray1.udpgw.com
 -
   name: Rule
