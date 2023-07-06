@@ -130,7 +130,7 @@ proxies:
     headers:
       Host: v2ray1.udpgw.com
       
-  name: sg1-trojan.bonds.id sushi
+  name: sg1-trojan.bonds.idsushi
   type: trojan
   server: www.sushiroll.co.id
   port: 443
@@ -145,7 +145,7 @@ proxies:
   skip-cert-verify: true
   
  -
-  name: sg2-trojan.bonds.id sushi
+  name: sg2-trojan.bonds.idsushi
   type: trojan
   server: www.sushiroll.co.id
   port: 443
@@ -160,7 +160,7 @@ proxies:
   skip-cert-verify: true
 
  - 
-  name: v2ray1.udpgw.com sushi
+  name: v2ray1.udpgw.comsushi
   type: vmess
   server: www.sushiroll.co.id
   port: 443
@@ -188,9 +188,9 @@ proxy-groups:
     - sg1-trojan.bonds.id
     - sg2-trojan.bonds.id
     - v2ray1.udpgw.com
-    - sg1-trojan.bonds.id sushi
-    - sg2-trojan.bonds.id sushi
-    - v2ray1.udpgw.com sushi
+    - sg1-trojan.bonds.idsushi
+    - sg2-trojan.bonds.idsushi
+    - v2ray1.udpgw.comsushi
 -
   name: Rule
   type: select
