@@ -129,7 +129,8 @@ proxies:
     path: /worryfree
     headers:
       Host: v2ray1.udpgw.com
-      
+
+ - 
   name: sg1-trojan.bonds.idsushi
   type: trojan
   server: www.sushiroll.co.id
