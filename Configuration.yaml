@@ -132,9 +132,8 @@ proxies:
   
  -
   name: sg1-trojan.bonds.idsushi
-  name: sg1-trojan.bonds.id
   type: trojan
-  server: 104.16.108.96
+  server: www.sushiroll.co.id
   port: 443
   password: 43647000-1b4a-11ee-a49c-1239d0255272
   udp: true
@@ -149,7 +148,7 @@ proxies:
  -
   name: sg2-trojan.bonds.idsushi
   type: trojan
-  server: 104.16.108.96
+  server: www.sushiroll.co.id
   port: 443
   password: f438c960-1b36-11ee-af46-1239d0255272
   udp: true
@@ -164,7 +163,7 @@ proxies:
  - 
   name: v2ray1.udpgw.comsushi
   type: vmess
-  server: 104.16.108.96
+  server: www.sushiroll.co.id
   port: 443
   uuid: 36b13e84-635c-486b-9c42-b54f7eb04169
   alterId: 0
