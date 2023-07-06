@@ -3,7 +3,7 @@ socks-port: 7891
 redir-port: 7892
 mixed-port: 7893
 mode: rule
-log-level: silent
+log-level: info
 allow-lan: true
 external-controller: 0.0.0.0:9090
 bind-address: "*"
@@ -25,19 +25,35 @@ dns:
     - 8.8.8.8
     - 9.9.9.9
   enhanced-mode: redir-host
+  fake-ip-filter:
+    - stun.l.google.com
+    - lens.l.google.com
+    - WORKGROUP
+    - "xncsi.xboxlive.com"
+    - "xncsi.xboxlive.cn"
+    - "www.msftconnecttest.com"
+    - "dns.msftncsi.com"
+    - "www.msftncsi.com"
+    - "www.msftconnecttest.com"
+    - "xbox.ipv6.microsoft.com"
+    - "x1ds.xboxlive.com"
   fake-ip-range: 216.239.32.0/19
   nameserver: 
     - 1.1.1.1
     - 8.8.8.8
     - 9.9.9.9
-    - mtalk.google.com
+    - 9.9.9.9:9953
     - https://dns.google/dns-query
     - https://dns64.dns.google/dns-query
     - https://cloudflare-dns.com/dns-query
     - https://dns64.cloudflare-dns.com/dns-query
+    - https://1.1.1.1/dns-query
+    - https://1.0.0.1/dns-query
+    - https://dns.adguard.com/dns-query
     - https://dns.quad9.net/dns-query
     - https://dns10.quad9.net/dns-query
-    - tls://mtalk.google.com:853
+    - https://9.9.9.9/dns-query
+    - https://doh.opendns.com/dns-query
     - tls://1.1.1.1:853
     - tls://8.8.8.8:853
     - tls://9.9.9.9:853
@@ -50,7 +66,6 @@ dns:
     - 8.8.8.8
     - 2001:4860:4860::8888
     - 2406:da19:66f:e810:2f1b:9ce8:a5f1:132f
-    - tcp://mtalk.google.com:53
     - tcp://1.1.1.1:53
     - tcp://8.8.8.8:53
     - tcp://9.9.9.9:53
@@ -114,7 +129,54 @@ proxies:
     path: /worryfree
     headers:
       Host: v2ray1.udpgw.com
+      
+  name: sg1-trojan.bonds.id sushi
+  type: trojan
+  server: www.sushiroll.co.id
+  port: 443
+  password: 43647000-1b4a-11ee-a49c-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: sg1-trojan.bonds.id
+  sni: sg1-trojan.bonds.id
+  skip-cert-verify: true
+  
+ -
+  name: sg2-trojan.bonds.id sushi
+  type: trojan
+  server: www.sushiroll.co.id
+  port: 443
+  password: f438c960-1b36-11ee-af46-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: sg2-trojan.bonds.id
+  sni: sg2-trojan.bonds.id
+  skip-cert-verify: true
 
+ - 
+  name: v2ray1.udpgw.com sushi
+  type: vmess
+  server: www.sushiroll.co.id
+  port: 443
+  uuid: 36b13e84-635c-486b-9c42-b54f7eb04169
+  alterId: 0
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: v2ray1.udpgw.com
+  network: ws
+  ws-opts:
+    path: /worryfree
+    headers:
+      Host: v2ray1.udpgw.com
+      
 proxy-groups:
 -
   name: Proxy
@@ -126,6 +188,9 @@ proxy-groups:
     - sg1-trojan.bonds.id
     - sg2-trojan.bonds.id
     - v2ray1.udpgw.com
+    - sg1-trojan.bonds.id sushi
+    - sg2-trojan.bonds.id sushi
+    - v2ray1.udpgw.com sushi
 -
   name: Rule
   type: select
