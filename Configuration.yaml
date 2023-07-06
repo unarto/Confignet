@@ -29,14 +29,14 @@ dns:
     - stun.l.google.com
     - lens.l.google.com
     - WORKGROUP
-    - "xncsi.xboxlive.com"
-    - "xncsi.xboxlive.cn"
-    - "www.msftconnecttest.com"
-    - "dns.msftncsi.com"
-    - "www.msftncsi.com"
-    - "www.msftconnecttest.com"
-    - "xbox.ipv6.microsoft.com"
-    - "x1ds.xboxlive.com"
+    - xncsi.xboxlive.com
+    - xncsi.xboxlive.cn
+    - www.msftconnecttest.com
+    - dns.msftncsi.com
+    - www.msftncsi.com
+    - www.msftconnecttest.com
+    - xbox.ipv6.microsoft.com
+    - x1ds.xboxlive.com
   fake-ip-range: 216.239.32.0/19
   nameserver: 
     - 1.1.1.1
