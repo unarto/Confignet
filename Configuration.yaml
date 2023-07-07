@@ -71,7 +71,7 @@ dns:
     - x1ds.xboxlive.com
   fallback-filter:
     geoip: false
-    geoip-code: IR
+    geoip-code: ID
     domain:
     - googleapis.com
     - googleapis.cn
@@ -80,7 +80,7 @@ dns:
 clash-for-android: 
   append-system-dns: true
 sniffer: 
-  enable: true 
+  enable: false 
 sniffing:
   force-domain: line.me
   skip-domain: line.me
@@ -934,6 +934,24 @@ rules:
 - DOMAIN-SUFFIX,x-art.com,Proxy
 - DOMAIN-SUFFIX,yimg.com,Proxy
 
+# vpn
+- DOMAIN-SUFFIX,v2ray1.udpgw.com,Proxy
+- DOMAIN-SUFFIX,th1-trojan.bonds.id,Proxy
+- DOMAIN-SUFFIX,sg1-trojan.bonds.id,Proxy
+- DOMAIN-SUFFIX,sg2-trojan.bonds.id,Proxy
+- DOMAIN,v2ray1.udpgw.com,Proxy
+- DOMAIN,th1-trojan.bonds.id,Proxy
+- DOMAIN,sg1-trojan.bonds.id,Proxy
+- DOMAIN,sg2-trojan.bonds.id,Proxy
+- DOMAIN-SUFFIX,v2ray1.udpgw.com,Rule
+- DOMAIN-SUFFIX,th1-trojan.bonds.id,Rule
+- DOMAIN-SUFFIX,sg1-trojan.bonds.id,Rule
+- DOMAIN-SUFFIX,sg2-trojan.bonds.id,Rule
+- DOMAIN,v2ray1.udpgw.com,Rule
+- DOMAIN,th1-trojan.bonds.id,Rule
+- DOMAIN,sg1-trojan.bonds.id,Rule
+- DOMAIN,sg2-trojan.bonds.id,Rule
+
 - DOMAIN-KEYWORD,dlercloud,Proxy
 - DOMAIN-SUFFIX,dler.cloud,Proxy
 
@@ -995,9 +1013,17 @@ rules:
 - IP-CIDR,202.160.128.0/22,Proxy
 - IP-CIDR,209.237.192.0/19,Proxy
 
+#  > Vpn
+- IP-CIDR,172.104.0.0/8,Proxy
+- IP-CIDR,103.0.0.0/8,Proxy
+- IP-CIDR,185.0.0.0/8,Proxy
+- IP-CIDR,172.104.0.0/8,Rule
+- IP-CIDR,103.0.0.0/8,Rule
+- IP-CIDR,185.0.0.0/8,Rule
+
 - SRC-IP-CIDR,192.168.1.24/32,Proxy 
 - DST-PORT,80,Proxy
 - DST-PORT,443,Proxy
 - SRC-PORT,7777,Proxy 
-- GEOIP,ID,Rule
+- GEOIP,ID
 - MATCH,Proxy
