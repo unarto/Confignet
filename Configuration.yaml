@@ -21,7 +21,7 @@ dns:
   ipv6: true
   use-hosts: true
   enhanced-mode: fake-ip
-  fake-ip-range: 192.0.0.0/24
+  fake-ip-range: 240.0.0.0/4
   nameserver: 
     - 1.1.1.1
     - 8.8.8.8
@@ -76,7 +76,7 @@ dns:
     - googleapis.com
     - googleapis.cn
     ipcidr:
-    - 192.0.0.0/24
+    - 240.0.0.0/4
 clash-for-android: 
   append-system-dns: true
 sniffer: 
@@ -223,18 +223,131 @@ proxy-groups:
     - sg2-trojan.bonds.id
     - v2ray1.udpgw.com
     - sg1-trojan.bonds.idsushi
-    - sg2-trojan.bonds.idsushi
-    - th1-trojan.bonds.idsushi
-    - v2ray1.udpgw.comsushi
+proxies:
+ -
+  name: sg1-trojan.bonds.id
+  type: trojan
+  server: 104.16.108.96
+  port: 443
+  password: 43647000-1b4a-11ee-a49c-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: sg1-trojan.bonds.id
+  sni: sg1-trojan.bonds.id
+  skip-cert-verify: true
+  
+ -
+  name: sg2-trojan.bonds.id
+  type: trojan
+  server: 104.16.108.96
+  port: 443
+  password: f438c960-1b36-11ee-af46-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: sg2-trojan.bonds.id
+  sni: sg2-trojan.bonds.id
+  skip-cert-verify: true
+
+ -
+  name: th1-trojan.bonds.id
+  type: trojan
+  server: 104.16.108.96
+  port: 443
+  password: 392fda40-1b63-11ee-90f7-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: th1-trojan.bonds.id
+  sni: th1-trojan.bonds.id
+  skip-cert-verify: true
+
+ - 
+  name: v2ray1.udpgw.com
+  type: vmess
+  server: 104.16.108.96
+  port: 443
+  uuid: 36b13e84-635c-486b-9c42-b54f7eb04169
+  alterId: 0
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: v2ray1.udpgw.com
+  network: ws
+  ws-opts:
+    path: /worryfree
+    headers:
+      Host: v2ray1.udpgw.com
+
+ - 
+  name: usa-v2ray.sshkit.net
+  type: vmess
+  server: 104.16.108.96
+  port: 443
+  uuid: 26841590-4d82-4942-b541-e5e5d1036a6e
+  alterId: 64
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: usa-v2ray.sshkit.net
+  network: ws
+  ws-opts:
+    path: /sshkit
+    headers:
+      Host: usa-v2ray.sshkit.net
+
+ - 
+  name: sg2-v2ray.sshkit.org
+  type: vmess
+  server: 104.16.108.96
+  port: 80
+  uuid: c6747da4-fb2e-4a2a-bdb7-8614bdd6b0b3
+  alterId: 0
+  cipher: auto
+  udp: true
+  network: ws
+  ws-opts:
+    path: /sshkit/1868163742/64a844eb09cb3/
+    headers:
+      Host: sg2-v2ray.sshkit.org
+      
+proxy-groups:
+-
+  name: Proxy
+  type: select
+  url: 'http://www.gstatic.com/generate_204'
+  interval: 300
+  strategy: consistent-hashing
+  proxies:
+    - sg1-trojan.bonds.id
+    - sg2-trojan.bonds.id
+    - th1-trojan.bonds.id
+    - v2ray1.udpgw.com
+    - usa-v2ray.sshkit.net
+    - sg2-v2ray.sshkit.org
 -
   name: Rule
   type: load-balance
-  strategy: round-robin
+  url: 'http://www.gstatic.com/generate_204'
+  interval: 300
+  strategy: consistent-hashing
   proxies:
     - Proxy
 -
   name: Cemplung
-  type: select
+  type: url-test
+  url: 'http://www.gstatic.com/generate_204'
+  interval: 300
+  strategy: consistent-hashing
   proxies:
     - Rule
 
