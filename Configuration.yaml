@@ -1,43 +1,27 @@
 port: 7890
 socks-port: 7891
-redir-port: 7892
-mixed-port: 7893
+mixed-port: 7894
 mode: rule
-log-level: silent
-allow-lan: true
+allow-lan: false
+log-level: info
+ipv6: true
+unified-delay: true
+geodata-mode: true
+tcp-concurrent: true
+enable-process: true
 external-controller: 0.0.0.0:9090
 bind-address: "*"
-ipv6: false
+profile: 
+store-selected: false
+store-fake-ip: true
 dns:
-  enable: true
-  ipv6: false
-  listen: 0.0.0.0:7894
-  fallback-filter:
-    geoip: false
-    ipcidr:
-    - 216.239.32.0/19
-  domain:
-    - googleapis.com
-    - googleapis.cn
-    - mtalk.google.com
-  default-nameserver: 
-    - 1.1.1.1
-    - 8.8.8.8
-    - 9.9.9.9
-  enhanced-mode: redir-host
-  fake-ip-filter:
-    - stun.l.google.com
-    - lens.l.google.com
-    - WORKGROUP
-    - xncsi.xboxlive.com
-    - xncsi.xboxlive.cn
-    - www.msftconnecttest.com
-    - dns.msftncsi.com
-    - www.msftncsi.com
-    - www.msftconnecttest.com
-    - xbox.ipv6.microsoft.com
-    - x1ds.xboxlive.com
-  fake-ip-range: 216.239.32.0/19
+  enable: true  
+  prefer-h3: true
+  listen: 127.0.0.1:7895
+  ipv6: true
+  use-hosts: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 192.0.0.0/24
   nameserver: 
     - 1.1.1.1
     - 8.8.8.8
@@ -69,11 +53,45 @@ dns:
     - tcp://1.1.1.1:53
     - tcp://8.8.8.8:53
     - tcp://9.9.9.9:53
+  default-nameserver: 
+    - 1.1.1.1
+    - 8.8.8.8
+    - 9.9.9.9
+  fake-ip-filter:
+    - stun.l.google.com
+    - lens.l.google.com
+    - WORKGROUP
+    - xncsi.xboxlive.com
+    - xncsi.xboxlive.cn
+    - www.msftconnecttest.com
+    - dns.msftncsi.com
+    - www.msftncsi.com
+    - www.msftconnecttest.com
+    - xbox.ipv6.microsoft.com
+    - x1ds.xboxlive.com
+  fallback-filter:
+    geoip: false
+    geoip-code: IR
+    domain:
+    - googleapis.com
+    - googleapis.cn
+    ipcidr:
+    - 192.0.0.0/24
+clash-for-android: 
+  append-system-dns: true
+sniffer: 
+  enable: true 
+sniffing:
+  force-domain: line.me
+  skip-domain: line.me
+  port-whitelist:
+    - 80
+    - 443
 tun:
   enable: true
   stack: system 
-  macOS-auto-route: true
-  macOS-auto-detect-interface: true
+  auto-route: true
+  auto-detect-interface: true
   dns-hijack:
     - tcp://108.137.44.39:53
     - tcp://8.8.8.8:53
@@ -159,6 +177,21 @@ proxies:
       Host: sg2-trojan.bonds.id
   sni: sg2-trojan.bonds.id
   skip-cert-verify: true
+  
+ -
+  name: th1-trojan.bonds.idsushi
+  type: trojan
+  server: www.sushiroll.co.id
+  port: 443
+  password: 392fda40-1b63-11ee-90f7-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: th1-trojan.bonds.id
+  sni: th1-trojan.bonds.id
+  skip-cert-verify: true
 
  - 
   name: v2ray1.udpgw.comsushi
@@ -191,6 +224,7 @@ proxy-groups:
     - v2ray1.udpgw.com
     - sg1-trojan.bonds.idsushi
     - sg2-trojan.bonds.idsushi
+    - th1-trojan.bonds.idsushi
     - v2ray1.udpgw.comsushi
 -
   name: Rule
