@@ -228,7 +228,8 @@ proxy-groups:
     - v2ray1.udpgw.comsushi
 -
   name: Rule
-  type: select
+  type: load-balance
+  strategy: round-robin
   proxies:
     - Proxy
 -
