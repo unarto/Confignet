@@ -1025,5 +1025,5 @@ rules:
 - DST-PORT,80,Proxy
 - DST-PORT,443,Proxy
 - SRC-PORT,7777,Proxy 
-- GEOIP,ID
+- GEOIP,ID,Rule
 - MATCH,Proxy
