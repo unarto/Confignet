@@ -1,0 +1,254 @@
+port: 7890
+socks-port: 7891
+mixed-port: 7894
+mode: rule
+allow-lan: false
+log-level: info
+ipv6: true
+unified-delay: true
+geodata-mode: true
+tcp-concurrent: true
+enable-process: true
+external-controller: 0.0.0.0:9090
+bind-address: "*"
+profile: 
+store-selected: false
+store-fake-ip: true
+dns:
+  enable: true  
+  prefer-h3: true
+  listen: 127.0.0.1:7895
+  ipv6: true
+  use-hosts: true
+  enhanced-mode: redir-host
+  fake-ip-range: 240.0.0.0/4
+  nameserver: 
+    - 8.8.8.8
+    - 8.8.4.4
+    - 9.9.9.9:9953
+    - https://dns.adguard.com/dns-query
+    - tls://dns.adguard-dns.com
+  fallback: 
+    - tcp://9.9.9.9
+    - 8.8.8.8
+    - 8.8.4.4
+    - 9.9.9.9:9953
+    - 2a10:50c0::ad1:ff
+    - 2a10:50c0::ad2:ff
+  default-nameserver: 
+    - 8.8.8.8
+    - 8.8.4.4
+    - 9.9.9.9:9953
+  fake-ip-filter:
+    - stun.l.google.com
+    - WORKGROUP
+  fallback-filter:
+    geoip: false
+    geoip-code: ID
+    domain:
+    - googleapis.com
+    - googleapis.cn
+    ipcidr:
+    - 240.0.0.0/4
+clash-for-android: 
+  append-system-dns: false
+sniffer: 
+  enable: false 
+sniffing:
+  force-domain: 
+  skip-domain: 
+  port-whitelist:
+    - 80
+    - 443
+tun:
+  enable: true
+  stack: system 
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - tcp://8.8.8.8:53
+experimental:
+  interface-name: en0
+
+proxies:
+ -
+  name: sg1-trojan.bonds.id
+  type: trojan
+  server: 104.16.108.96
+  port: 443
+  password: 43647000-1b4a-11ee-a49c-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: sg1-trojan.bonds.id
+  sni: sg1-trojan.bonds.id
+  skip-cert-verify: true
+  
+ -
+  name: sg2-trojan.bonds.id
+  type: trojan
+  server: 104.16.108.96
+  port: 443
+  password: f438c960-1b36-11ee-af46-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: sg2-trojan.bonds.id
+  sni: sg2-trojan.bonds.id
+  skip-cert-verify: true
+
+ -
+  name: th1-trojan.bonds.id
+  type: trojan
+  server: 104.16.108.96
+  port: 443
+  password: 392fda40-1b63-11ee-90f7-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: th1-trojan.bonds.id
+  sni: th1-trojan.bonds.id
+  skip-cert-verify: true
+
+ - 
+  name: v2ray1.udpgw.com
+  type: vmess
+  server: 104.16.108.96
+  port: 443
+  uuid: 36b13e84-635c-486b-9c42-b54f7eb04169
+  alterId: 0
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: v2ray1.udpgw.com
+  network: ws
+  ws-opts:
+    path: /worryfree
+    headers:
+      Host: v2ray1.udpgw.com
+
+ - 
+  name: usa-v2ray.sshkit.net
+  type: vmess
+  server: 104.16.108.96
+  port: 443
+  uuid: 26841590-4d82-4942-b541-e5e5d1036a6e
+  alterId: 64
+  cipher: auto
+  udp: true
+  skip-cert-verify: true
+  tls: true
+  servername: usa-v2ray.sshkit.net
+  network: ws
+  ws-opts:
+    path: /sshkit
+    headers:
+      Host: usa-v2ray.sshkit.net
+
+ - 
+  name: sg2-v2ray.sshkit.org
+  type: vmess
+  server: 104.16.108.96
+  port: 80
+  uuid: c6747da4-fb2e-4a2a-bdb7-8614bdd6b0b3
+  alterId: 0
+  cipher: auto
+  udp: true
+  network: ws
+  ws-opts:
+    path: /sshkit/1868163742/64a844eb09cb3/
+    headers:
+      Host: sg2-v2ray.sshkit.org
+      
+proxy-groups:
+-
+  name: Proxy
+  type: select
+  url: 'http://www.gstatic.com/generate_204'
+  interval: 300
+  strategy: consistent-hashing
+  proxies:
+    - sg1-trojan.bonds.id
+    - sg2-trojan.bonds.id
+    - th1-trojan.bonds.id
+    - v2ray1.udpgw.com
+    - usa-v2ray.sshkit.net
+    - sg2-v2ray.sshkit.org
+-
+  name: Rule
+  type: load-balance
+  url: 'http://www.gstatic.com/generate_204'
+  interval: 300
+  strategy: consistent-hashing
+  proxies:
+    - Proxy
+-
+  name: Cemplung
+  type: url-test
+  url: 'http://www.gstatic.com/generate_204'
+  interval: 300
+  strategy: consistent-hashing
+  proxies:
+    - Rule
+
+rules:
+- DOMAIN-SUFFIX,ip6-localhost,Rule
+- DOMAIN-SUFFIX,ip6-loopback,Rule
+- DOMAIN-SUFFIX,localhost,Rule
+- DOMAIN-SUFFIX,local,Rule
+- IP-CIDR,192.0.0.0/24,Rule
+- IP-CIDR,192.168.0.0/16,Rule
+- IP-CIDR,10.0.0.0/8,Rule
+- IP-CIDR,172.16.0.0/12,Rule
+- IP-CIDR,127.0.0.0/8,Rule
+- IP-CIDR,100.64.0.0/10,Rule
+- IP-CIDR6,::1/128,Rule,no-resolve
+- IP-CIDR6,fc00::/7,Rule,no-resolve
+- IP-CIDR6,fe80::/10,Rule,no-resolve
+- IP-CIDR6,fd00::/8,Rule,no-resolve
+
+# vpn
+- DOMAIN-SUFFIX,v2ray1.udpgw.com,Proxy
+- DOMAIN-SUFFIX,th1-trojan.bonds.id,Proxy
+- DOMAIN-SUFFIX,sg1-trojan.bonds.id,Proxy
+- DOMAIN-SUFFIX,sg2-trojan.bonds.id,Proxy
+- DOMAIN,v2ray1.udpgw.com,Proxy
+- DOMAIN,th1-trojan.bonds.id,Proxy
+- DOMAIN,sg1-trojan.bonds.id,Proxy
+- DOMAIN,sg2-trojan.bonds.id,Proxy
+- DOMAIN-SUFFIX,v2ray1.udpgw.com,Rule
+- DOMAIN-SUFFIX,th1-trojan.bonds.id,Rule
+- DOMAIN-SUFFIX,sg1-trojan.bonds.id,Rule
+- DOMAIN-SUFFIX,sg2-trojan.bonds.id,Rule
+- DOMAIN,v2ray1.udpgw.com,Rule
+- DOMAIN,th1-trojan.bonds.id,Rule
+- DOMAIN,sg1-trojan.bonds.id,Rule
+- DOMAIN,sg2-trojan.bonds.id,Rule
+
+#  > Vpn
+- IP-CIDR,172.104.0.0/8,Proxy
+- IP-CIDR,103.0.0.0/8,Proxy
+- IP-CIDR,185.0.0.0/8,Proxy
+- IP-CIDR,172.104.0.0/8,Rule
+- IP-CIDR,103.0.0.0/8,Rule
+- IP-CIDR,185.0.0.0/8,Rule
+
+- IP-CIDR,104.24.0.0/14,Rule
+- IP-CIDR,172.64.0.0/13,Rule
+- IP-CIDR,104.16.0.0/12,Rule
+- IP-CIDR,104.16.0.0/12,Proxy
+- IP-CIDR,172.64.0.0/13,Proxy
+
+- SRC-IP-CIDR,192.168.0.0/16,Proxy 
+- DST-PORT,80,Proxy
+- DST-PORT,443,Proxy
+- SRC-PORT,7777,Proxy 
+- GEOIP,ID,Rule
+- MATCH,Proxy,Rule
