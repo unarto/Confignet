@@ -50,16 +50,6 @@ dns:
     - googleapis.cn
     ipcidr:
     - 240.0.0.0/4
-clash-for-android: 
-  append-system-dns: false
-sniffer: 
-  enable: false 
-sniffing:
-  force-domain: 
-  skip-domain: 
-  port-whitelist:
-    - 80
-    - 443
 tun:
   enable: true
   stack: system 
