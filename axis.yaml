@@ -6,9 +6,9 @@ allow-lan: false
 log-level: info
 ipv6: true
 unified-delay: true
-geodata-mode: true
-tcp-concurrent: true
-enable-process: true
+geodata-mode: false
+tcp-concurrent: false
+enable-process: false
 external-controller: 0.0.0.0:9090
 bind-address: "*"
 profile: 
