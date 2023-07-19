@@ -206,7 +206,7 @@ proxy-groups:
     - sg1-trojan.bonds.id
     - sg2-trojan.bonds.id
     - th1-trojan.bonds.id
-    - v2ray1.udpgw.com
+    - sgv-4.openv2ray.com
     - usa-v2ray.sshkit.net
     - sg2-v2ray.sshkit.org
 -
