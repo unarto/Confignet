@@ -158,7 +158,7 @@ proxies:
   servername: sgv-4.openv2ray.com
   network: ws
   ws-opts:
-    path: /worryfree
+    path: /opentunnel?user=opentunnel.net-hshshs
     headers:
       Host: sgv-4.openv2ray.com
 
