@@ -4,11 +4,11 @@ mixed-port: 7894
 mode: rule
 allow-lan: false
 log-level: info
-ipv6: true
+ipv6: false
 unified-delay: true
 geodata-mode: true
-tcp-concurrent: true
-enable-process: true
+tcp-concurrent: false
+enable-process: false
 external-controller: 0.0.0.0:9090
 bind-address: "*"
 profile: 
@@ -16,7 +16,7 @@ store-selected: false
 store-fake-ip: true
 dns:
   enable: true  
-  prefer-h3: true
+  prefer-h3: false
   listen: 127.0.0.1:7895
   ipv6: true
   use-hosts: true
@@ -146,22 +146,22 @@ proxies:
   skip-cert-verify: true
 
  - 
-  name: v2ray1.udpgw.com
+  name: sgv-4.openv2ray.com
   type: vmess
   server: 104.16.108.96
-  port: 443
-  uuid: 36b13e84-635c-486b-9c42-b54f7eb04169
-  alterId: 0
+  port: 80
+  uuid: a40d34c6-b77c-4648-9210-3e8d2f4226b5
+  alterId: 16
   cipher: auto
   udp: true
   skip-cert-verify: true
-  tls: true
-  servername: v2ray1.udpgw.com
+  tls: false
+  servername: sgv-4.openv2ray.com
   network: ws
   ws-opts:
     path: /worryfree
     headers:
-      Host: v2ray1.udpgw.com
+      Host: sgv-4.openv2ray.com
 
  - 
   name: usa-v2ray.sshkit.net
