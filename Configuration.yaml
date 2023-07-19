@@ -60,7 +60,6 @@ dns:
   fake-ip-filter:
     - stun.l.google.com
     - lens.l.google.com
-    - WORKGROUP
     - xncsi.xboxlive.com
     - xncsi.xboxlive.cn
     - www.msftconnecttest.com
