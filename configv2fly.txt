@@ -4,3 +4,8 @@ trojan://970300f0-280e-11ee-94e5-1239d0255272@104.16.108.96:443?sni=sg-2.test3.n
 trojan://43647000-1b4a-11ee-a49c-1239d0255272@104.16.108.96:443?sni=sg1-trojan.bonds.id&host=sg1-trojan.bonds.id&security=tls&type=ws&path=%2Fhowdy#104.16.108.96
 trojan://43647000-1b4a-11ee-a49c-1239d0255272@104.16.108.96:443?sni=sg1-trojan.bonds.id&host=sg1-trojan.bonds.id&security=tls&type=ws&path=%2Fhowdy#104.16.108.96
 vmess://eyJhZGQiOiIxMDQuMTYuMTA4Ljk2IiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiJzZy0zLjByZC5uZXQiLCJpZCI6ImFmMmZiNjkwLTI1ZWEtMTFlZS1iMjMxLTIwNWM2ZDVmNWQ3OCIsIm5ldCI6IndzIiwicGF0aCI6Ii8yaWQ3cjZzdiIsInBvcnQiOiI4MCIsInBzIjoiUjgwOlZtZXNzIFNpbmdhcG9yZSBDb250YWJvIDIwMjMtMDctMjYiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoiIiwidHlwZSI6IiIsInYiOiIyIn0=
+vmess://eyJhZGQiOiJ2MnJheTMudWRwZ3cuY29tIiwiYWlkIjoiMCIsImhvc3QiOiJ2MnJheTMudWRwZ3cuY29tIiwiaWQiOiI1MmQ2ZjU2Ni1iY2YzLTQ2NDEtYTJiOC0wNzQ4NmIzNzM2Y2MiLCJuZXQiOiJ3cyIsInBhdGgiOiIvd29ycnlmcmVlIiwicG9ydCI6IjQ0MyIsInBzIjoidjJyYXkzLnVkcGd3LmNvbSIsInNjeSI6ImF1dG8iLCJzbmkiOiJ2MnJheTMudWRwZ3cuY29tIiwidGxzIjoidGxzIiwidHlwZSI6IiIsInYiOiIyIn0=
+trojan://c9b7f3e0-280e-11ee-bde0-1239d0255272@sg2-trojan.bonds.id:443?sni=sg2-trojan.bonds.id&type=tcp&security=tls&headerType=none#dghdhdh
+trojan://970300f0-280e-11ee-94e5-1239d0255272@sg-2.test3.net:443?sni=sg-2.test3.net&type=tcp&security=tls&headerType=none#104.16.108.96
+trojan://43647000-1b4a-11ee-a49c-1239d0255272@sg1-trojan.bonds.id:443?sni=sg1-trojan.bonds.id&type=tcp&security=tls&headerType=none#104.16.108.96
+trojan://43647000-1b4a-11ee-a49c-1239d0255272@sg1-trojan.bonds.id:443?sni=sg1-trojan.bonds.id&host=sg1-trojan.bonds.id&security=tls&type=ws&path=%2Fhowdy#bhbhb
