@@ -9,3 +9,4 @@ trojan://c9b7f3e0-280e-11ee-bde0-1239d0255272@sg2-trojan.bonds.id:443?sni=sg2-tr
 trojan://970300f0-280e-11ee-94e5-1239d0255272@sg-2.test3.net:443?sni=sg-2.test3.net&type=tcp&security=tls&headerType=none#104.16.108.96
 trojan://43647000-1b4a-11ee-a49c-1239d0255272@sg1-trojan.bonds.id:443?sni=sg1-trojan.bonds.id&type=tcp&security=tls&headerType=none#104.16.108.96
 trojan://43647000-1b4a-11ee-a49c-1239d0255272@sg1-trojan.bonds.id:443?sni=sg1-trojan.bonds.id&host=sg1-trojan.bonds.id&security=tls&type=ws&path=%2Fhowdy#bhbhb
+trojan://f4708580-345d-11ee-b234-205c6d5f5d78@asia.oceis.net:443?path=%2Ftrojanws&security=tls&type=ws&sni=gdfgdf#ASIA+Trojan-WS(2023-08-13)
