@@ -1,6 +1,6 @@
-vmess://eyJhZGQiOiIxMDQuMTYuMTA4Ljk2IiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiJzZy0xLjByZC5uZXQiLCJpZCI6IjlhZjk1MTEwLTM1MmYtMTFlZS1iNjM3LTIwNWM2ZDVmNWQ3OCIsIm5ldCI6IndzIiwicGF0aCI6Ii95Z3VuaXF6NyIsInBvcnQiOiI4MCIsInBzIjoiUjgwOlZtZXNzIFNpbmdhcG9yZSBIRS0xIExpbWl0IDIwMjMtMDgtMTQiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoiIiwidHlwZSI6IiIsInYiOiIyIn0=
-vmess://eyJhZGQiOiIxMDQuMTYuMTA4Ljk2IiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiJkeW5hbWljLXNnMWIub2Jmcy54eXoiLCJpZCI6ImRlNmU3ZDM2LTA5ZmMtNGM1Yy1iZmJhLWExMGNhZjE1YmEwZCIsIm5ldCI6IndzIiwicGF0aCI6Ii93b3JyeWZyZWUiLCJwb3J0IjoiNDQzIiwicHMiOiJkeW5hbWljLXNnMWIub2Jmcy54eXoiLCJzY3kiOiJhdXRvIiwic25pIjoiZHluYW1pYy1zZzFiLm9iZnMueHl6IiwidGxzIjoidGxzIiwidHlwZSI6IiIsInYiOiIyIn0=
-vmess://eyJhZGQiOiIxMDQuMTYuMTA4Ljk2IiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiJ2MnJheTEudWRwZ3cuY29tIiwiaWQiOiI1NmIyZmZjOS0xOTE2LTRkYWYtOWY5Yi03MjhkOWEyMDg3ZTgiLCJuZXQiOiJ3cyIsInBhdGgiOiIvd29ycnlmcmVlIiwicG9ydCI6IjQ0MyIsInBzIjoidjJyYXkxLnVkcGd3LmNvbSIsInNjeSI6ImF1dG8iLCJzbmkiOiJ2MnJheTEudWRwZ3cuY29tIiwidGxzIjoidGxzIiwidHlwZSI6IiIsInYiOiIyIn0=
-trojan://de534ba0-352e-11ee-a798-1239d0255272@104.16.108.96:443?sni=sg-2.test3.net&host=sg-2.test3.net&security=tls&type=ws&path=%2Fhowdy#sg-2.test3.net
-trojan://b26b15c0-352e-11ee-9042-1239d0255272@104.16.108.96:443?sni=sg1-trojan.bonds.id&host=sg1-trojan.bonds.id&security=tls&type=ws&path=%2Fhowdy#sg1-trojan.bonds.id
-trojan://86880230-352e-11ee-8545-1239d0255272@104.16.108.96:443?sni=th1-trojan.bonds.id&host=th1-trojan.bonds.id&security=tls&type=ws&path=%2Fhowdy#dgdvg
+trojan://9b67a330-c4fa-11ee-80ba-1239d0255272@www.sushiroll.co.id:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#www.sushiroll.co.id
+trojan://9b67a330-c4fa-11ee-80ba-1239d0255272@sg3-trojan.bonds.id:443?sni=bzbzbzhzhzh&type=tcp&security=tls&headerType=none#
+trojan://237040d0-b49b-11ee-86fd-1239d0255272@104.21.69.223:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.16.108.96
+trojan://237040d0-b49b-11ee-86fd-1239d0255272@www.sushiroll.co.id:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.21.69.223
+trojan://237040d0-b49b-11ee-86fd-1239d0255272@104.16.108.96:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.16.108.96
+trojan://237040d0-b49b-11ee-86fd-1239d0255272@sg3-trojan.bonds.id:443?sni=tnc16-alisg.isnssdk.com&type=tcp&security=tls&headerType=none#tnc16-alisg.isnssdk.com
