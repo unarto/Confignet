@@ -1,10 +1,8 @@
+trojan://b07da080-e217-11ee-9a99-1239d0255272@104.18.49.163:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#www.sushiroll.co.id
+trojan://7026fec0-e110-11ee-ba93-1239d0255272@sg1-trojan.bonds.id:443?sni=tnc16-alisg.isnssdk.com&type=tcp&security=tls&headerType=none#tnc16-alisg.isnssdk.com
+trojan://c7706360-db09-11ee-a389-1239d0255272@sushiroll.co.id:443?sni=us1.test3.net&host=us1.test3.net&type=ws&security=tls&path=%2Fhowdy#104.16.108.96
+trojan://aa4fb6b0-d186-11ee-b06e-1239d0255272@www.sushiroll.co.id:443?sni=sg2-trojan.bonds.id&host=sg2-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.16.108.96
+trojan://8ac8e0a0-db09-11ee-8366-1239d0255272@sg3-trojan.bonds.id:443?sni=tnc16-alisg.isnssdk.com&type=tcp&security=tls&headerType=none#tnc16-alisg.isnssdk.com
 trojan://aa4fb6b0-d186-11ee-b06e-1239d0255272@104.16.108.96:443?sni=sg2-trojan.bonds.id&host=sg2-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.16.108.96
-trojan://19ccb530-d186-11ee-a99d-1239d0255272@104.16.108.96:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.16.126.32
+trojan://c7706360-db09-11ee-a389-1239d0255272@104.16.108.96:443?sni=us1.test3.net&host=us1.test3.net&type=ws&security=tls&path=%2Fhowdy#104.16.108.96
 trojan://19ccb530-d186-11ee-a99d-1239d0255272@sg3-trojan.bonds.id:443?sni=tnc16-alisg.isnssdk.com&type=tcp&security=tls&headerType=none#tnc16-alisg.isnssdk.com
-trojan://9c6fd000-cda8-11ee-8026-1239d0255272@investors.spotify.com:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#162.159.128.7
-trojan://c73f9120-cac9-11ee-bdec-1239d0255272@104.18.0.139:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.16.108.96
-trojan://58034260-c765-11ee-831e-1239d0255272@104.16.126.32:443?sni=sg2-trojan.bonds.id&host=sg2-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.16.108.96
-trojan://58034260-c765-11ee-831e-1239d0255272@sg2-trojan.bonds.id:443?sni=tnc16-alisg.isnssdk.com&type=tcp&security=tls&headerType=none#tnc16-alisg.isnssdk.com
-trojan://9b67a330-c4fa-11ee-80ba-1239d0255272@www.sushiroll.co.id:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#www.sushiroll.co.id
-trojan://9b67a330-c4fa-11ee-80ba-1239d0255272@sg3-trojan.bonds.id:443?sni=tnc16-alisg.isnssdk.com&type=tcp&security=tls&headerType=none#tnc16-alisg.isnssdk.com
-trojan://237040d0-b49b-11ee-86fd-1239d0255272@104.21.69.223:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.16.108.96
