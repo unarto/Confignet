@@ -1,4 +1,8 @@
-trojan://82d9b020-496a-11ef-83e1-1239d0255272@104.16.108.96:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&security=tls&type=ws&path=%2Fhowdy#104.16.108.96
-trojan://82d9b020-496a-11ef-83e1-1239d0255272@sg3-trojan.bonds.id:443?sni=fjurd&type=tcp&security=tls&headerType=none#
-trojan://44619900-496a-11ef-ad38-1239d0255272@104.16.108.96:443?sni=sg1-trojan.bonds.id&host=sg1-trojan.bonds.id&security=tls&type=ws&path=%2Fhowdy#104.16.108.96
+vless://3b4e6790-7e19-4643-8a37-2d4fc7193a54@ava.game.naver.com:443?sni=ava.game.naver.com.ali.wonghd.my.id&fp=randomized&host=ava.game.naver.com.ali.wonghd.my.id&type=ws&security=tls&path=%2F%3Fed%3D2048&encryption=none#ali+-+ava
+vless://3b4e6790-7e19-4643-8a37-2d4fc7193a54@104.18.214.235:443?sni=df.game.naver.com.gatot.wonghd.my.id&host=df.game.naver.com.gatot.wonghd.my.id&type=ws&security=tls&path=%2F%3Fed%3D2048&encryption=none#XL+XCL
+trojan://44619900-496a-11ef-ad38-1239d0255272@clova.line.me:443?sni=sg1-trojan.bonds.id&host=sg1-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.16.108.96
+trojan://82d9b020-496a-11ef-83e1-1239d0255272@ovo.id:443?sni=sg3-trojan.bonds.id&host=sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.18.2.96
+trojan://82d9b020-496a-11ef-83e1-1239d0255272@104.18.213.235:443?sni=data.df.game.naver.com.sg3-trojan.bonds.id&host=data.df.game.naver.com.sg3-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.18.3.96
+trojan://82d9b020-496a-11ef-83e1-1239d0255272@sg3-trojan.bonds.id:443?sni=choice.livedoor.com&type=tcp&security=tls&headerType=none#tnc16-alisg.isnssdk.com
+trojan://44619900-496a-11ef-ad38-1239d0255272@104.16.108.96:443?sni=sg1-trojan.bonds.id&host=sg1-trojan.bonds.id&type=ws&security=tls&path=%2Fhowdy#104.16.108.96
 trojan://44619900-496a-11ef-ad38-1239d0255272@sg1-trojan.bonds.id:443?sni=tnc16-alisg.isnssdk.com&type=tcp&security=tls&headerType=none#tnc16-alisg.isnssdk.com
