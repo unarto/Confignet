@@ -1,0 +1,217 @@
+port: 7890
+socks-port: 7891
+mixed-port: 7894
+mode: rule
+allow-lan: false
+log-level: info
+ipv6: true
+unified-delay: true
+geodata-mode: false
+tcp-concurrent: false
+enable-process: false
+external-controller: 0.0.0.0:9090
+bind-address: "*"
+profile: 
+store-selected: false
+store-fake-ip: true
+dns:
+  enable: true  
+  prefer-h3: true
+  listen: 127.0.0.1:7895
+  ipv6: true
+  use-hosts: true
+  enhanced-mode: redir-host
+  fake-ip-range: 240.0.0.0/4
+  nameserver: 
+    - 8.8.8.8
+    - 8.8.4.4
+    - 9.9.9.9:9953
+    - https://dns.adguard.com/dns-query
+    - tls://dns.adguard-dns.com
+  fallback: 
+    - tcp://9.9.9.9
+    - 8.8.8.8
+    - 8.8.4.4
+    - 9.9.9.9:9953
+    - 2a10:50c0::ad1:ff
+    - 2a10:50c0::ad2:ff
+  default-nameserver: 
+    - 8.8.8.8
+    - 8.8.4.4
+    - 9.9.9.9:9953
+  fake-ip-filter:
+    - stun.l.google.com
+    - WORKGROUP
+  fallback-filter:
+    geoip: false
+    geoip-code: ID
+    domain:
+    - googleapis.com
+    - googleapis.cn
+    ipcidr:
+    - 240.0.0.0/4
+tun:
+  enable: true
+  stack: system 
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - tcp://8.8.8.8:53
+experimental:
+  interface-name: en0
+
+proxies:
+ -
+  name: sg1-trojan.bonds.id
+  type: trojan
+  server: sg3-trojan.bonds.id
+  port: 443
+  password: 82d9b020-496a-11ef-83e1-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: sg3-trojan.bonds.id
+  sni: bsdk.sgsnssdk.com
+  skip-cert-verify: true
+  
+ -
+  name: sg2-trojan.bonds.id
+  type: trojan
+  server: 104.18.51.191
+  port: 443
+  password: 82d9b020-496a-11ef-83e1-1239d0255272
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: sg3-trojan.bonds.id
+  sni: sg3-trojan.bonds.id
+  skip-cert-verify: true
+
+ -
+  name: vlessntls
+  type: vless
+  server: 104.16.108.96
+  port: 443
+  uuid: b0cb1b0b-f5ba-4ca4-a587-cfe48126bff7
+  cipher: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /vless-ws
+    headers:
+      Host: support.zoom.us.sg1.v-less.biz.id
+  tls: true
+  servername: support.zoom.us.sg1.v-less.biz.id
+  skip-cert-verify: true
+
+ -
+  name: hysteria
+  type: hysteria
+  server: 172.232.235.47
+  ports: 20000-50000
+  auth_str: hwudp
+  obfs: hw
+  alpn:
+    - 
+  protocol: udp
+  up: 100
+  down: 100
+  sni: 
+  skip-cert-verify: true 
+  recv_window_conn: 5767168
+  recv_window: 23068672
+  disable_mtu_discovery: true
+  fast-open: true
+
+ -
+  name: socks
+  type: socks5
+  server: 127.0.0.1
+  port: 1080
+  username: 
+  password: 
+  tls: true
+  skip-cert-verify: true 
+  udp: true
+      
+proxy-groups:
+-
+  name: Si
+  type: select
+  url: 'http://www.gstatic.com/generate_204'
+  interval: 300
+  strategy: consistent-hashing
+  proxies:
+    - sg1-trojan.bonds.id
+    - sg2-trojan.bonds.id
+    - vlessntls
+    - hysteria
+    - socks
+-
+  name: Cemplung
+  type: select
+  url: 'http://www.gstatic.com/generate_204'
+  interval: 300
+  strategy: consistent-hashing
+  proxies:
+    - Si
+    - socks
+
+rules:
+- DOMAIN-SUFFIX,ip6-localhost,Cemplung
+- DOMAIN-SUFFIX,ip6-loopback,Cemplung
+- DOMAIN-SUFFIX,localhost,Cemplung
+- DOMAIN-SUFFIX,local,Cemplung
+- IP-CIDR,192.0.0.0/24,Cemplung
+- IP-CIDR,192.168.0.0/16,Cemplung
+- IP-CIDR,10.0.0.0/8,Cemplung
+- IP-CIDR,172.16.0.0/12,Cemplung
+- IP-CIDR,127.0.0.0/8,Cemplung
+- IP-CIDR,100.64.0.0/10,Cemplung
+- IP-CIDR6,::1/128,Cemplung,no-resolve
+- IP-CIDR6,fc00::/7,Cemplung,no-resolve
+- IP-CIDR6,fe80::/10,Cemplung,no-resolve
+- IP-CIDR6,fd00::/8,Cemplung,no-resolve
+
+# vpn
+- DOMAIN-SUFFIX,v2ray1.udpgw.com,Si
+- DOMAIN-SUFFIX,th1-trojan.bonds.id,Si
+- DOMAIN-SUFFIX,sg1-trojan.bonds.id,Si
+- DOMAIN-SUFFIX,sg2-trojan.bonds.id,Si
+- DOMAIN,v2ray1.udpgw.com,Si
+- DOMAIN,th1-trojan.bonds.id,Si
+- DOMAIN,sg1-trojan.bonds.id,Si
+- DOMAIN,sg2-trojan.bonds.id,Si
+- DOMAIN-SUFFIX,v2ray1.udpgw.com,Cemplung
+- DOMAIN-SUFFIX,th1-trojan.bonds.id,Cemplung
+- DOMAIN-SUFFIX,sg1-trojan.bonds.id,Cemplung
+- DOMAIN-SUFFIX,sg2-trojan.bonds.id,Cemplung
+- DOMAIN,v2ray1.udpgw.com,Cemplung
+- DOMAIN,th1-trojan.bonds.id,Cemplung
+- DOMAIN,sg1-trojan.bonds.id,Cemplung
+- DOMAIN,sg2-trojan.bonds.id,Cemplung
+
+#  > Vpn
+- IP-CIDR,172.104.0.0/8,Si
+- IP-CIDR,103.0.0.0/8,Si
+- IP-CIDR,185.0.0.0/8,Si
+- IP-CIDR,172.104.0.0/8,Cemplung
+- IP-CIDR,103.0.0.0/8,Cemplung
+- IP-CIDR,185.0.0.0/8,Cemplung
+
+- IP-CIDR,104.24.0.0/14,Cemplung
+- IP-CIDR,172.64.0.0/13,Cemplung
+- IP-CIDR,104.16.0.0/12,Cemplung
+- IP-CIDR,104.16.0.0/12,Si
+- IP-CIDR,172.64.0.0/13,Si
+
+- SRC-IP-CIDR,192.168.0.0/16,Si 
+- DST-PORT,80,Si
+- DST-PORT,443,Si
+- SRC-PORT,7777,Si 
+- GEOIP,ID,Cemplung
+- MATCH,Si,Cemplung
