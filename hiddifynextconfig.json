@@ -46,13 +46,7 @@
         "rewrite_ttl": 3000
       }
     ],
-    "final": "dns-remote",
-    "static_ips": {
-      "sky.rethinkdns.com": [
-        "104.17.148.22",
-        "104.17.147.22",
-        "104.21.83.62",
-        "172.67.214.246"
+    "final": "dns-remote"
       ]
     },
     "independent_cache": true
