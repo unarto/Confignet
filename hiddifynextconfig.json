@@ -45,7 +45,6 @@
         "server": "dns-remote",
         "rewrite_ttl": 3000
       }
-    },
     "independent_cache": true
   },
   "inbounds": [
