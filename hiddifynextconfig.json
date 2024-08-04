@@ -136,7 +136,7 @@
       "tls":       {
         "enabled": true,
         "server_name": "blog.webex.com.sg1.v-less.biz.id",
-        "insecure": true
+        "insecure": true,
         "utls": {
           "enabled": true,
           "fingerprint": "randomized"
