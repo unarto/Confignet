@@ -162,10 +162,6 @@
     },
     {
       "type": "direct",
-      "tag": "direct-fragment",
-    },
-    {
-      "type": "direct",
       "tag": "bypass"
     },
     {
