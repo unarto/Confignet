@@ -163,11 +163,6 @@
     {
       "type": "direct",
       "tag": "direct-fragment",
-      "tls_fragment": {
-        "enabled": true,
-        "size": "10-30",
-        "sleep": "2-8"
-      }
     },
     {
       "type": "direct",
