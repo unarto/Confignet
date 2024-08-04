@@ -137,9 +137,14 @@
         "enabled": true,
         "server_name": "blog.webex.com.sg1.v-less.biz.id",
         "insecure": true
-      "utls":         {
+        "utls": {
           "enabled": true,
           "fingerprint": "randomized"
+        }
+      },
+      "multiplex": {
+        "protocol": "smux",
+        "max_streams": 32
       },
       "transport":       {
         "type": "ws",
