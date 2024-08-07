@@ -1,0 +1,147 @@
+{
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "Internet",
+      "outbounds": [
+        "Best Latency",
+        "Vless-UPGRADE-HTTPS",
+        "Vless-UPGRADE-HTTPS-CDN",
+        "Vless-UPGRADE-HTTP",
+        "Vless-UPGRADE-HTTP-CDN"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Best Latency",
+      "outbounds": [
+        "Vless-UPGRADE-HTTPS",
+        "Vless-UPGRADE-HTTP-CDN",
+        "Vless-UPGRADE-HTTP",
+        "Vless-UPGRADE-HTTP-CDN"
+      ],
+      "url": "https://detectportal.firefox.com/success.txt",
+      "interval": "5m0s"
+    },
+    {
+      "type": "vless",
+      "tag": "Vless-UPGRADE-HTTPS",
+      "detour": "direct-out",
+      "domain_strategy": "prefer_ipv6",
+      "fallback_delay": "300ms",
+      "server": "104.16.108.96",
+      "server_port": 443,
+      "uuid": "b0cb1b0b-f5ba-4ca4-a587-cfe48126bff7",
+      "tls": {
+        "enabled": true,
+        "server_name": "support.zoom.us.sg1.v-less.biz.id",
+        "insecure": true,
+        "utls": {
+          "fingerprint": "randomized"
+        }
+      },
+      "multiplex": {
+        "enabled": true,
+        "protocol": "smux",
+        "max_streams": 32
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "support.zoom.us.sg1.v-less.biz.id",
+        "path": "/vless-ws",
+        "headers": {
+          "Host": "support.zoom.us.sg1.v-less.biz.id"
+        }
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "Vless-UPGRADE-HTTPS-CDN",
+      "detour": "direct-out",
+      "domain_strategy": "prefer_ipv6",
+      "fallback_delay": "300ms",
+      "server": "104.16.108.96",
+      "server_port": 443,
+      "uuid": "b0cb1b0b-f5ba-4ca4-a587-cfe48126bff7",
+      "tls": {
+        "enabled": true,
+        "server_name": "support.zoom.us.sg1.v-less.biz.id",
+        "insecure": true,
+        "utls": {
+          "fingerprint": "randomized"
+        }
+      },
+      "multiplex": {
+        "enabled": true,
+        "protocol": "smux",
+        "max_streams": 32
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "support.zoom.us.sg1.v-less.biz.id",
+        "path": "/vless-ws",
+        "headers": {
+          "Host": "support.zoom.us.sg1.v-less.biz.id"
+        }
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "Vless-UPGRADE-HTTP",
+      "detour": "direct-out",
+      "domain_strategy": "prefer_ipv6",
+      "fallback_delay": "300ms",
+      "server": "104.16.108.96",
+      "server_port": 80,
+      "uuid": "b0cb1b0b-f5ba-4ca4-a587-cfe48126bff7",
+      "multiplex": {
+        "enabled": true,
+        "protocol": "smux",
+        "max_streams": 32
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "support.zoom.us.sg1.v-less.biz.id",
+        "path": "/vless-ws"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "Vless-UPGRADE-HTTP-CDN",
+      "detour": "direct-out",
+      "domain_strategy": "prefer_ipv6",
+      "fallback_delay": "300ms",
+      "server": "104.16.108.96",
+      "server_port": 80,
+      "uuid": "b0cb1b0b-f5ba-4ca4-a587-cfe48126bff7",
+      "multiplex": {
+        "enabled": true,
+        "protocol": "smux",
+        "max_streams": 32
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "support.zoom.us.sg1.v-less.biz.id",
+        "path": "/vless-ws"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "direct",
+      "tag": "direct-out",
+      "domain_strategy": "prefer_ipv6",
+      "fallback_delay": "300ms"
+    },
+    {
+      "type": "block",
+      "tag": "block-out"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    }
+  ]
+}
