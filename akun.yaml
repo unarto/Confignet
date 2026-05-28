@@ -1,0 +1,103 @@
+proxies:
+  - name: "ZIVPN-Core"
+    type: socks5
+    server: 127.0.0.1
+    port: 7777
+    udp: false
+  -
+    name: "berbagi"
+    type: vmess
+    server: id.breaker.qzz.io
+    port: 443
+    uuid: 5640aea0-4f10-4530-9629-a70213c179e9
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: tnc16-alisg.isnssdk.com
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: id.breaker.qzz.io
+  -
+    name: "wibuvpn"
+    type: vless
+    server: wibuvpn.priasawit.web.id
+    port: 443
+    uuid: 44cd7f0a-660e-45b2-aadb-e8848123f927
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: tnc16-alisg.isnssdk.com
+    alpn:
+    - http/1.1
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: wibuvpn.priasawit.web.id
+  -
+    name: "vmess-ws"
+    type: vmess
+    server: 104.18.19.37
+    port: 443
+    uuid: 5640aea0-4f10-4530-9629-a70213c179e9
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: id.breaker.qzz.io
+    network: ws
+    ws-opts:
+      path: /43.218.77.16=443
+      headers:
+        Host: id.breaker.qzz.io:
+ -
+  name: sg1.6n6.net
+  type: trojan
+  server: sg1.6n6.net
+  port: 443
+  password: 7e01eb40-0b94-11f0-9e65-1239d0255272
+  udp: true
+  network: tcp
+  ws-opts:
+    path:
+    headers:
+      Host: tnc16-alisg.isnssdk.com
+  sni: bsdk.sgsnssdk.com
+  skip-cert-verify: true
+  
+ -
+  name: sg2.6n6.net
+  type: trojan
+  server: sg2.6n6.net
+  port: 443
+  password: f8dcb2e0-1ad9-11f0-ad9a-1239d0255272
+  udp: true
+  network: tcp
+  ws-opts:
+    path: 
+    headers:
+      Host: 
+  sni: tnc16-alisg.isnssdk.com
+  skip-cert-verify: true
+  
+ -
+  name: sg3.6n6.net
+  type: trojan
+  server: sg3.6n6.net
+  port: 443
+  password: 16e98800-1ada-11f0-b062-1239d0255272
+  udp: true
+  network: tcp
+  ws-opts:
+    path: 
+    headers:
+      Host: 
+  sni: tnc16-alisg.isnssdk.com
+  skip-cert-verify: true

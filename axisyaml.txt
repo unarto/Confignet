@@ -1,0 +1,389 @@
+# HYSTERIA_CONFIG: {"ip":"udp-biznet.jekyjteng.my.id","pass":"trial22270","obfs":"hu``hqb`c","port_range":"6000-19999","mtu":"9000","auto_boot":false,"auto_reset":false,"reset_timeout":15}
+# Clash Config (TCP Optimized for udp-premium.jekyjteng.my.id)
+port: 7890
+socks-port: 7891
+mixed-port: 7894
+mode: rule
+allow-lan: false
+log-level: info
+ipv6: true
+find-process-mode: strict
+unified-delay: true
+geodata-mode: false
+tcp-concurrent: false
+enable-process: false
+external-controller: 0.0.0.0:9090
+
+geox-url:
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
+
+geo-auto-update: false
+geo-update-interval: 24
+
+implementations:
+  - succinct
+  - mph
+geosite-matcher: succinct
+
+global-client-fingerprint: chrome
+keep-alive-interval: 15
+
+hosts:
+# '*.mihomo.dev': 127.0.0.1
+# '.dev': 127.0.0.1
+# 'alpha.mihomo.dev': '::1'
+# test.com: [1.1.1.1, 2.2.2.2]
+# home.lan: lan
+
+profile: 
+  store-selected: false
+  store-fake-ip: true
+
+bind-address: "*"
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
+
+sniff: 
+    QUIC:
+      ports: [ 443 ]
+    TLS:
+      ports: [443, 8443]
+    HTTP: 
+      ports: [80, 8080-8880]
+      override-destination: true
+
+dns:
+  enable: true  
+  prefer-h3: true
+  listen: 127.0.0.1:7895
+  ipv6: true
+  ipv6-timeout: 300
+  use-hosts: true
+  enhanced-mode: redir-host
+  fake-ip-range: 240.0.0.0/4
+  default-nameserver: 
+    - 8.8.8.8
+    - 8.8.4.4
+    - 9.9.9.9:9953
+    - system
+  proxy-server-nameserver:
+    - 8.8.8.8
+    - 8.8.4.4
+    - 9.9.9.9:9953
+    - system
+  nameserver: 
+    - 8.8.8.8
+    - 8.8.4.4
+    - 9.9.9.9:9953
+    - https://dns.adguard.com/dns-query
+    - tls://dns.adguard-dns.com
+    - dhcp://en0 # dns from dhcp
+    - quic://dns.adguard.com:784
+  fallback: 
+    - tcp://9.9.9.9
+    - 8.8.8.8
+    - 8.8.4.4
+    - 9.9.9.9:9953 
+    - 2a10:50c0::ad1:ff
+    - 2a10:50c0::ad2:ff
+  fake-ip-filter:
+    - stun.l.google.com
+    - WORKGROUP
+  fallback-filter:
+    geoip: false
+    geoip-code: ID
+  #   geosite:
+  #     - gfw
+    domain:
+    - googleapis.com
+    - googleapis.cn
+  #     - '+.facebook.com'
+  #     - '+.youtube.com'
+    ipcidr:
+    - 240.0.0.0/4
+tun:
+  enable: true
+  stack: mixed # 'mixed' or 'gvisor' handles gaming UDP traffic much better than 'system'
+  auto-route: true
+  auto-detect-interface: true
+
+proxies:
+  - name: "ZIVPN-Core"
+    type: socks5
+    server: 127.0.0.1
+    port: 7777
+    udp: false
+  -
+    name: "berbagi"
+    type: vmess
+    server: id.breaker.qzz.io
+    port: 443
+    uuid: 5640aea0-4f10-4530-9629-a70213c179e9
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: tnc16-alisg.isnssdk.com
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+        Host: id.breaker.qzz.io
+  -
+    name: "wibuvpn"
+    type: vless
+    server: wibuvpn.priasawit.web.id
+    port: 443
+    uuid: 44cd7f0a-660e-45b2-aadb-e8848123f927
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: tnc16-alisg.isnssdk.com
+    alpn:
+    - http/1.1
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: wibuvpn.priasawit.web.id
+  -
+    name: "vmess-ws"
+    type: vmess
+    server: 104.18.19.37
+    port: 443
+    uuid: 5640aea0-4f10-4530-9629-a70213c179e9
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    servername: id.breaker.qzz.io
+    network: ws
+    ws-opts:
+      path: /43.218.77.16=443
+      headers:
+        Host: id.breaker.qzz.io
+
+proxy-groups:
+  - name: "Proxy"
+    type: select
+    proxies:
+      - "ZIVPN-Core"
+      - "berbagi"
+      - "wibuvpn"
+      - "vmess-ws"
+  - name: "Cemplung"
+    type: url-test
+    proxies:
+      - "Proxy"
+rule-providers:
+  Cemplung:
+    type: file
+    behavior: classical
+    url: "https://raw.githubusercontent.com/unarto/configaxis/main/Cemplung.yaml"
+    path: "./Cemplung.yaml"
+  basicads:
+    type: file
+    behavior: classical
+    url: "https://raw.githubusercontent.com/unarto/configaxis/main/Cemplung.yaml"
+    path: "./basicads.yaml"
+  BlockAds:
+    type: file
+    behavior: classical
+    url: "https://raw.githubusercontent.com/unarto/configaxis/main/Cemplung.yaml"
+    path: "./BlockAds.yaml"
+  games:
+    type: file
+    behavior: classical
+    url: "https://raw.githubusercontent.com/unarto/configaxis/main/Cemplung.yaml"
+    path: "./games.yaml"
+  gaming:
+    type: file
+    behavior: classical
+    url: "https://raw.githubusercontent.com/unarto/configaxis/main/Cemplung.yaml"
+    path: "./gaming.yaml"
+  Indo:
+    type: file
+    behavior: classical
+    url: "https://raw.githubusercontent.com/unarto/configaxis/main/Cemplung.yaml"
+    path: "./Indo.yaml"
+  porn:
+    type: file
+    behavior: classical
+    url: "https://raw.githubusercontent.com/unarto/configaxis/main/Cemplung.yaml"
+    path: "./porn.yaml"
+  portgames:
+    type: file
+    behavior: classical
+    url: "https://raw.githubusercontent.com/unarto/configaxis/main/Cemplung.yaml"
+    path: "./portgames.yaml"
+  sosmed:
+    type: file
+    behavior: classical
+    url: "https://raw.githubusercontent.com/unarto/configaxis/main/Cemplung.yaml"
+    path: "./sosmed.yaml"
+  streaming:
+    type: file
+    behavior: classical
+    url: "https://raw.githubusercontent.com/unarto/configaxis/main/Cemplung.yaml"
+    path: "./streaming.yaml"
+  Youtube:
+    type: file
+    behavior: classical
+    url: "https://raw.githubusercontent.com/unarto/configaxis/main/Cemplung.yaml"
+    path: "./Youtube.yaml"
+
+rules:
+- RULE-SET,Cemplung,Proxy
+- RULE-SET,basicads,Proxy
+- RULE-SET,BlockAds,Proxy
+- RULE-SET,games,Proxy
+- RULE-SET,gaming,Proxy
+- RULE-SET,Indo,Proxy
+- RULE-SET,porn,Proxy
+- RULE-SET,portgames,Proxy
+- RULE-SET,sosmed,Proxy
+- RULE-SET,streaming,Proxy
+- RULE-SET,Youtube,Proxy
+
+- GEOSITE,category-ads-all,REJECT
+- GEOSITE,category-games,Proxy
+- GEOSITE,category-media,Proxy
+- GEOSITE,category-dev,Proxy
+- GEOSITE,category-ads-all,REJECT
+- GEOSITE,private,DIRECT
+- GEOSITE,youtube,Proxy
+- GEOSITE,google,Proxy
+- GEOSITE,twitter,Proxy
+- GEOSITE,pixiv,Proxy
+- GEOSITE,category-scholar-!cn,Proxy
+- GEOSITE,biliintl,Proxy
+- GEOSITE,onedrive,Proxy
+- GEOSITE,microsoft@cn,Proxy
+- GEOSITE,apple-cn,Proxy
+- GEOSITE,steam@cn,Proxy
+- GEOSITE,category-games@cn,Proxy
+- GEOSITE,geolocation-!cn,Proxy
+- GEOSITE,cn,DIRECT
+
+# Call of Duty - UDP Port Range Rules  
+
+- DOMAIN-KEYWORD,codm,Proxy
+- DOMAIN-KEYWORD,garena,Proxy
+- DOMAIN-KEYWORD,activision,Proxy
+- DOMAIN-SUFFIX,codm.garena.com,Proxy
+- DOMAIN-SUFFIX,activision.com,Proxy
+
+- DST-PORT,3074,Proxy
+- DST-PORT,3478-3479,Proxy
+- DST-PORT,4379-4380,Proxy
+- DST-PORT,27000-27031,Proxy
+- DST-PORT,27036,Proxy
+- DST-PORT,5000-5500,Proxy
+- DST-PORT,53,Proxy
+- DST-PORT,80,Proxy
+- DST-PORT,443,Proxy
+- DST-PORT,853,Proxy
+- DST-PORT,3544,Proxy
+- DST-PORT,4500,Proxy
+- DST-PORT,7500,Proxy
+- DST-PORT,7000-8000,Proxy
+- DST-PORT,19302,Proxy
+- DST-PORT,10000-60000,Proxy
+- DST-PORT,3480,Proxy
+- DST-PORT,3484,Proxy
+- DST-PORT,45395,Proxy
+- DST-PORT,50318,Proxy
+- DST-PORT,59234,Proxy
+- DST-PORT,40000,Proxy
+- DST-PORT,3478,Proxy
+- DST-PORT,8801-8810,Proxy
+- DST-PORT,50000-65535,Proxy
+- DST-PORT,0-65535,Proxy
+- DST-PORT,2000-2005,Proxy
+- DST-PORT,3000-3010,Proxy
+- DST-PORT,7000-7999,Proxy
+- DST-PORT,8700,Proxy
+- DST-PORT,8000-8999,Proxy
+- DST-PORT,9000-9999,Proxy
+- DST-PORT,10000-20000,Proxy
+- DST-PORT,20001,Proxy
+- DST-PORT,20000-30000,Proxy
+- DST-PORT,30000-65535,Proxy
+- DST-PORT,21,Proxy
+- DST-PORT,23,Proxy
+- DST-PORT,25,Proxy
+- DST-PORT,81,Proxy
+- DST-PORT,143,Proxy
+- DST-PORT,465,Proxy
+- DST-PORT,587,Proxy
+- DST-PORT,993,Proxy
+- DST-PORT,995,Proxy
+- DST-PORT,8000,Proxy
+- DST-PORT,8008,Proxy
+- DST-PORT,8080,Proxy
+- DST-PORT,8081,Proxy
+- DST-PORT,8090,Proxy
+- DST-PORT,8443,Proxy
+- DST-PORT,8888,Proxy
+
+- SRC-PORT,3074,Proxy
+- SRC-PORT,3478-3479,Proxy
+- SRC-PORT,4379-4380,Proxy
+- SRC-PORT,27000-27031,Proxy
+- SRC-PORT,27036,Proxy
+- SRC-PORT,5000-5500,Proxy
+- SRC-PORT,53,Proxy
+- SRC-PORT,80,Proxy
+- SRC-PORT,443,Proxy
+- SRC-PORT,853,Proxy
+- SRC-PORT,3544,Proxy
+- SRC-PORT,4500,Proxy
+- SRC-PORT,7500,Proxy
+- SRC-PORT,7000-8000,Proxy
+- SRC-PORT,19302,Proxy
+- SRC-PORT,10000-60000,Proxy
+- SRC-PORT,3480,Proxy
+- SRC-PORT,3484,Proxy
+- SRC-PORT,45395,Proxy
+- SRC-PORT,50318,Proxy
+- SRC-PORT,59234,Proxy
+- SRC-PORT,40000,Proxy
+- SRC-PORT,3478,Proxy
+- SRC-PORT,8801-8810,Proxy
+- SRC-PORT,50000-65535,Proxy
+- SRC-PORT,0-65535,Proxy
+- SRC-PORT,2000-2005,Proxy
+- SRC-PORT,3000-3010,Proxy
+- SRC-PORT,7000-7999,Proxy
+- SRC-PORT,8700,Proxy
+- SRC-PORT,8000-8999,Proxy
+- SRC-PORT,9000-9999,Proxy
+- SRC-PORT,10000-20000,Proxy
+- SRC-PORT,20001,Proxy
+- SRC-PORT,20000-30000,Proxy
+- SRC-PORT,30000-65535,Proxy
+
+- AND,((NETWORK,udp),(DST-PORT,3074)),Proxy
+
+  #GEOIP 规则
+- GEOIP,private,DIRECT,no-resolve
+- GEOIP,telegram,Proxy
+- GEOIP,cloudflare,Proxy
+- GEOIP,cloudfront,Proxy
+- GEOIP,facebook,Proxy
+- GEOIP,google,Proxy
+- GEOIP,twitter,Proxy
+- GEOIP,JP,Proxy
+- GEOIP,CN,Proxy
+- GEOIP,ID,Proxy
+- MATCH,Proxy,Cemplung
